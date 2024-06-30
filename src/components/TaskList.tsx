@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
 import TaskItem from "./TaskItem";
 import { sortByPriority } from "../lib/utils";
+import { RootState } from "../redux/store";
 
 const TaskList: React.FC = () => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);

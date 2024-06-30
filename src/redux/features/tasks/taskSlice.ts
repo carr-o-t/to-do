@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Main } from "../../types";
+import { Main } from "../../../types";
 
 export interface TaskState {
   tasks: Main.Task[];
@@ -17,11 +17,13 @@ const taskSlice = createSlice({
       state.tasks.push(action.payload);
     },
     removeTask(state, action: PayloadAction<string>) {
-      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+      state.tasks = state.tasks.filter(
+        (task: Main.Task) => task.id !== action.payload
+      );
     },
     updateTask(state, action: PayloadAction<Main.Task>) {
       const { id, title, priority } = action.payload;
-      const task = state.tasks.find((task) => task.id === id);
+      const task = state.tasks.find((task: Main.Task) => task.id === id);
       if (task) {
         if (title) task.title = title;
         if (priority) task.priority = priority;
